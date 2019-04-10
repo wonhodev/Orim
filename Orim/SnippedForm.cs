@@ -91,9 +91,22 @@ namespace Orim
             }
         }
 
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CloseForm()
         {
             this.Close();
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseForm();
+        }
+
+        private void SnippedForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                CloseForm();
+            }
         }
     }
 }
