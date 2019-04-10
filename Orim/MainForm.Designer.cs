@@ -40,6 +40,7 @@
             this.captureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runOnStartupCheck = new System.Windows.Forms.CheckBox();
             this.mainMenuStrip.SuspendLayout();
             this.optionsGroupBox.SuspendLayout();
             this.notifyContextMenuStrip.SuspendLayout();
@@ -64,18 +65,19 @@
             // 
             // optionsGroupBox
             // 
+            this.optionsGroupBox.Controls.Add(this.runOnStartupCheck);
             this.optionsGroupBox.Controls.Add(this.runInSystemTrayCheck);
             this.optionsGroupBox.Controls.Add(this.useHotkeyCheck);
             this.optionsGroupBox.Location = new System.Drawing.Point(12, 27);
             this.optionsGroupBox.Name = "optionsGroupBox";
-            this.optionsGroupBox.Size = new System.Drawing.Size(240, 73);
+            this.optionsGroupBox.Size = new System.Drawing.Size(240, 94);
             this.optionsGroupBox.TabIndex = 1;
             this.optionsGroupBox.TabStop = false;
             // 
             // runInSystemTrayCheck
             // 
             this.runInSystemTrayCheck.AutoSize = true;
-            this.runInSystemTrayCheck.Location = new System.Drawing.Point(6, 19);
+            this.runInSystemTrayCheck.Location = new System.Drawing.Point(6, 42);
             this.runInSystemTrayCheck.Name = "runInSystemTrayCheck";
             this.runInSystemTrayCheck.Size = new System.Drawing.Size(130, 17);
             this.runInSystemTrayCheck.TabIndex = 2;
@@ -86,7 +88,7 @@
             // useHotkeyCheck
             // 
             this.useHotkeyCheck.AutoSize = true;
-            this.useHotkeyCheck.Location = new System.Drawing.Point(6, 42);
+            this.useHotkeyCheck.Location = new System.Drawing.Point(6, 65);
             this.useHotkeyCheck.Name = "useHotkeyCheck";
             this.useHotkeyCheck.Size = new System.Drawing.Size(221, 17);
             this.useHotkeyCheck.TabIndex = 3;
@@ -137,11 +139,21 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // runOnStartupCheck
+            // 
+            this.runOnStartupCheck.Location = new System.Drawing.Point(6, 19);
+            this.runOnStartupCheck.Name = "runOnStartupCheck";
+            this.runOnStartupCheck.Size = new System.Drawing.Size(103, 17);
+            this.runOnStartupCheck.TabIndex = 0;
+            this.runOnStartupCheck.Text = "Run on Startup";
+            this.runOnStartupCheck.UseVisualStyleBackColor = true;
+            this.runOnStartupCheck.CheckedChanged += new System.EventHandler(this.runOnStartupCheck_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 111);
+            this.ClientSize = new System.Drawing.Size(264, 131);
             this.Controls.Add(this.optionsGroupBox);
             this.Controls.Add(this.mainMenuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -175,6 +187,7 @@
         private System.Windows.Forms.ToolStripMenuItem captureToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.CheckBox runOnStartupCheck;
     }
 }
 
