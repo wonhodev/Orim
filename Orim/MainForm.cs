@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.Security.Principal;
 using System.Windows.Forms;
 
 namespace Orim
@@ -12,6 +14,7 @@ namespace Orim
         {
             InitializeComponent();
 
+            runOnStartupCheck.Checked = Properties.Settings.Default.RunOnStartup;
             runInSystemTrayCheck.Checked = Properties.Settings.Default.RunInSystemTray;
             useHotkeyCheck.Checked = Properties.Settings.Default.UseHotkey;
             if (useHotkeyCheck.Checked)
@@ -104,6 +107,32 @@ namespace Orim
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void runOnStartupCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+            string appName = Properties.Resources.AppName;
+
+            try
+            {
+                if (runOnStartupCheck.Checked)
+                {
+                    registryKey.SetValue(appName, Application.ExecutablePath);
+                }
+                else
+                {
+                    registryKey.DeleteValue(appName);                    
+                }
+
+                Properties.Settings.Default.RunOnStartup = runOnStartupCheck.Checked;
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Cannot access Registry");
+                throw;
+            }            
         }
 
         private void runInSystemTrayCheck_CheckedChanged(object sender, EventArgs e)
